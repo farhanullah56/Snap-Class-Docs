@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNAP CLASS Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=Outfit:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Project documentation</span>
+      <h1>SNAP CLASS</h1>
+      <p class="lede">Take class attendance from a classroom photo or a voice recording. Teachers save time, and students see their own record.</p>
+      <div class="hero-actions">
+        <a class="btn btn-pink" href="#teacher">Teacher guide</a>
+        <a class="btn btn-black" href="#student">Student guide</a>
+      </div>
+    </div>
+    <figure class="hero-shot">
+      <img src="images/home.png" alt="SNAP CLASS home screen with the Student Portal and Teacher Portal" width="1336" height="615">
+    </figure>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Sections">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#start">Getting started</a></li>
+    <li><a href="#teacher">Teacher guide</a></li>
+    <li><a href="#student">Student guide</a></li>
+    <li><a href="#tech">Under the hood</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="section" id="overview">
+    <div class="wrap">
+      <h2>Overview</h2>
+      <p class="intro">SNAP CLASS is a web app built with Streamlit. It finds students in classroom photos, or by their voice, and saves attendance to a Supabase database.</p>
+
+      <div class="roles">
+        <div class="card">
+          <span class="tag teacher">Teacher</span>
+          <h3>Runs the class</h3>
+          <ul>
+            <li>Creates subjects</li>
+            <li>Shares a join link and QR code</li>
+            <li>Takes attendance by face or by voice</li>
+            <li>Reviews and saves the result</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag student">Student</span>
+          <h3>Joins and checks in</h3>
+          <ul>
+            <li>Logs in with their face</li>
+            <li>Enrolls in a subject with its code</li>
+            <li>Sees classes attended</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="flow-title">How one class works</p>
+      <ol class="flow">
+        <li>Create the subject</li>
+        <li>Share the join link</li>
+        <li>Take photos or record audio</li>
+        <li>Review the result</li>
+        <li>Confirm and save</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="start">
+    <div class="wrap">
+      <h2>Getting started</h2>
+      <p class="intro">Open the app and choose <b>I am Student</b> or <b>I am Teacher</b> on the home screen.</p>
+
+      <div class="group">
+        <h3>Teacher: register and log in</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-text">
+              <div class="step-num">1</div>
+              <h3>Register</h3>
+              <p>Choose <b>I am Teacher</b>, then <b>Register Instead</b>. Enter a username, your name, a password, and the password again. Click <b>Register now</b>.</p>
+            </div>
+            <figure><img src="images/register-teacher.png" alt="Teacher registration form" width="872" height="635"></figure>
+          </div>
+          <div class="step">
+            <div class="step-text">
+              <div class="step-num">2</div>
+              <h3>Log in</h3>
+              <p>Enter your username and password, then click <b>Login</b>. You can also press Ctrl + Enter.</p>
+            </div>
+            <figure><img src="images/login-password.png" alt="Login using password" width="1047" height="631"></figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Student: log in with FaceID</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-text">
+              <div class="step-num">1</div>
+              <h3>Take a photo</h3>
+              <p>Choose <b>I am Student</b>. Allow the camera, centre your face, and click <b>Take Photo</b>. The app compares your face with the enrolled faces and opens your dashboard.</p>
+            </div>
+            <figure><img src="images/login-face.png" alt="Student FaceID login with the camera" width="778" height="611"></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="teacher">
+    <div class="wrap">
+      <h2>Teacher guide</h2>
+      <p class="intro">After login, the dashboard has three buttons: <b>Take Attendence</b>, <b>Manage Subjects</b> and <b>Attendence Records</b>.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-text">
+            <div class="step-num">1</div>
+            <h3>Manage subjects</h3>
+            <p>Each subject card shows its code, section, number of students and number of classes held. Click <b>Create new Subject</b> to add one.</p>
+          </div>
+          <div class="pair">
+            <figure><img src="images/manage-subjects.png" alt="Manage Subjects page" width="685" height="571"></figure>
+            <figure><img src="images/create-subject.png" alt="Create New Subject dialog" width="759" height="565"><figcaption>Enter the code, name and section.</figcaption></figure>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <div class="step-num">2</div>
+            <h3>Share the class</h3>
+            <p>Click <b>Share Code</b> on a subject card. The dialog shows a join link, the subject code and a QR code. Students open the link or scan the code to join.</p>
+          </div>
+          <figure><img src="images/share-class.png" alt="Share Class Link dialog with QR code" width="782" height="583"></figure>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <div class="step-num">3</div>
+            <h3>Take attendance</h3>
+            <ol>
+              <li>Open <b>Take Attendence</b> and choose the subject.</li>
+              <li>Click <b>Add Photos</b> and take one or more classroom photos. <b>Clear All Photos</b> starts again.</li>
+              <li>Click <b>Run face analysis</b>, or click <b>Use Voice attendence</b>.</li>
+            </ol>
+          </div>
+          <figure><img src="images/take-attendance.png" alt="Take Attendance page with a photo added" width="638" height="569"></figure>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <div class="step-num">4</div>
+            <h3>Or use voice</h3>
+            <p>Record the class saying "I am present", then click <b>Analyze Audio</b>. The app matches each voice to an enrolled student.</p>
+          </div>
+          <figure><img src="images/voice-attendance.png" alt="Voice Attendence dialog" width="721" height="504"></figure>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <div class="step-num">5</div>
+            <h3>Review and save</h3>
+            <p>The table lists every enrolled student, the photo where they were found (<b>Source</b>) and their <b>Status</b>, Present or Absent. Check it, then click <b>Confirm and save</b>. <b>Discard</b> throws the result away.</p>
+          </div>
+          <figure><img src="images/review-attendance.png" alt="Review table with Discard and Confirm and save buttons" width="703" height="543"></figure>
+        </div>
+
+        <div class="step">
+          <div class="step-text">
+            <div class="step-num">6</div>
+            <h3>View records</h3>
+            <p>Open <b>Attendence Records</b> to see one row per class: date, subject, subject code and how many students were present, for example 1/2 students.</p>
+          </div>
+          <figure><img src="images/records.png" alt="Attendence Record table" width="879" height="528"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="student">
+    <div class="wrap">
+      <h2>Student guide</h2>
+      <p class="intro">After FaceID login, a student sees every enrolled subject, with the total classes and how many they attended.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-text">
+            <h3>Your dashboard</h3>
+            <ul>
+              <li><b>Enroll in subject:</b> click the button and type the subject code from your teacher. A join link fills in the code for you.</li>
+              <li><b>Unenroll from this course:</b> click the button under a subject card to leave it.</li>
+            </ul>
+          </div>
+          <figure><img src="images/student-dashboard.png" alt="Student dashboard with an enrolled subject" width="734" height="571"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tech">
+    <div class="wrap">
+      <h2>Under the hood</h2>
+      <p class="intro">The app is written in Python. Face and voice recognition run on the server, and results are saved to Supabase.</p>
+
+      <div class="tables">
+        <div>
+          <h3>Tools</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Part</th><th>Used for</th></tr></thead>
+              <tbody>
+                <tr><td>Streamlit</td><td>Web pages, camera and audio input</td></tr>
+                <tr><td>Supabase</td><td>Database for teachers, students, subjects and attendance</td></tr>
+                <tr><td>dlib, face_recognition_models</td><td>Finding faces and making face embeddings</td></tr>
+                <tr><td>scikit-learn (SVC)</td><td>Matching a face to an enrolled student</td></tr>
+                <tr><td>Resemblyzer, librosa</td><td>Voice embeddings from recorded audio</td></tr>
+                <tr><td>bcrypt</td><td>Hashing teacher passwords</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>Database tables</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Table</th><th>Main columns</th></tr></thead>
+              <tbody>
+                <tr><td>teacher</td><td>username, name, password (hashed)</td></tr>
+                <tr><td>student</td><td>name, face embedding, voice embedding</td></tr>
+                <tr><td>subject</td><td>subject code, name, section, teacher</td></tr>
+                <tr><td>subject_student</td><td>student, subject</td></tr>
+                <tr><td>attendence</td><td>student, subject, timestamp, is_present</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">SNAP CLASS · Project documentation · October 2026</div>
+</footer>
+</body>
+</html>
